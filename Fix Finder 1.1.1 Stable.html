@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fix Finder – Washers &amp; Dryers</title>
+<style>
+:root{--bg:#f3f1ec;--card:#fff;--ink:#1d2a33;--mut:#5f6c76;--acc:#d9540b;--on:#fff;--ok:#1b7a4b;--line:#ddd9d0;--warn:#fff3d6}
+@media(prefers-color-scheme:dark){:root{--bg:#14191d;--card:#1e262c;--ink:#e9eef2;--mut:#9aa7b1;--acc:#ff8a4c;--on:#1a1208;--ok:#4cc38a;--line:#2e3a43;--warn:#3a3016}}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--ink);color:var(--bg);padding:14px 16px 0}
+header h1{margin:0 auto;max-width:720px;font-size:22px;font-weight:800;letter-spacing:-.3px}
+nav{display:flex;gap:4px;max-width:720px;margin:10px auto 0}
+nav button{flex:1;background:none;border:0;color:inherit;opacity:.7;padding:10px 4px;font:600 14px system-ui,-apple-system,"Segoe UI",sans-serif;border-bottom:3px solid transparent;cursor:pointer}
+nav button.on{opacity:1;border-color:var(--acc)}
+main{max-width:720px;margin:0 auto;padding:16px}
+h2{margin:6px 0 12px;font-size:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px}
+.big{display:block;width:100%;text-align:left;font:700 18px system-ui,-apple-system,"Segoe UI",sans-serif;padding:18px 16px;margin-bottom:10px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;cursor:pointer}
+.big small{display:block;font-weight:400;color:var(--mut);font-size:14px}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.btn{font:700 16px system-ui,-apple-system,"Segoe UI",sans-serif;padding:12px 16px;border-radius:8px;border:2px solid var(--acc);background:var(--acc);color:var(--on);cursor:pointer}
+.btn.alt{background:none;color:var(--ink);border-color:var(--line)}
+.btn.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.row .btn{flex:1;min-width:140px}
+.back{background:none;border:0;color:var(--acc);font:600 15px system-ui,-apple-system,"Segoe UI",sans-serif;padding:4px 0 10px;cursor:pointer}
+.tags{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:10px 0;font-size:15px}
+.tags b{color:var(--mut);font-weight:600}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:13px;font-weight:700;border:1px solid var(--line)}
+.Easy{color:var(--ok)}.Medium{color:#b7791f}.Hard{color:#c53030}
+.warn{background:var(--warn);border-radius:8px;padding:10px 12px;font-size:14px;margin-bottom:12px}
+.partbox{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px;margin:12px 0}.partbox h3{margin:0 0 6px;font-size:16px}.fitok{color:var(--ok);font-weight:700}.fitwarn{color:#b7791f;font-weight:700}.links a{display:inline-block;margin:4px 8px 0 0;padding:6px 12px;border:1px solid var(--acc);border-radius:8px;color:var(--acc);text-decoration:none;font-weight:600;font-size:14px}
+ol.steps{list-style:none;padding:0;margin:8px 0}
+ol.steps li{margin:8px 0}
+ol.steps label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+ol.steps input{width:22px;height:22px;margin-top:2px;accent-color:var(--ok);flex:none}
+input[type=text],textarea{width:100%;font:inherit;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+label.f{display:block;font-weight:600;margin:12px 0 4px}
+img.ph{max-width:100%;max-height:220px;border-radius:8px;margin-top:8px;display:block}
+.mut{color:var(--mut);font-size:14px}
+summary{font-weight:700;font-size:17px;cursor:pointer}
+details ol{padding-left:22px}details li{margin:6px 0}
+.res{background:var(--bg);border-radius:8px;padding:10px 12px;margin-top:10px;font-size:15px}
+.hist h3{margin:0 0 2px;font-size:17px}
+.del{background:none;border:0;color:#c53030;font:600 14px system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer;padding:6px 0}
+</style></head>
+<body>
+<header><h1>Fix Finder <small style="font-size:12px;font-weight:600;opacity:.75">Parts Finder build 1.1.1</small></h1>
+<nav id="nav"></nav></header>
+<main id="app"></main>
+<script>
+const C=(n,d,t,p,$,...s)=>({n,d,t,p,$,s});
+const P={
+washer:[
+{t:"Won't drain",c:[
+C("Clogged drain pump filter or coin trap","Easy","Towel, shallow pan, pliers","","$0 (cleaning)","Unplug the washer and lay towels down.","Open the small access panel at the bottom front (front-load) or find the filter by the pump.","Slowly unscrew the filter, letting water drain into the pan.","Clear lint, coins and socks. Screw the filter back in tight.","Run a drain-and-spin cycle to test."),
+C("Kinked or clogged drain hose","Easy","Bucket, pliers, flashlight","Washer drain hose","$10–25","Unplug and pull the washer out from the wall.","Check the hose for kinks and flatten any you find.","Detach the hose (bucket ready) and run water through it to find clogs.","Clear or replace the hose and reconnect with the clamp.","Run a drain cycle and check for leaks."),
+C("Failed drain pump","Medium","Nut driver or screwdriver, pliers, towels","Washer drain pump","$25–80","Unplug the washer and shut off the water.","Tip the washer back or open the lower panel to reach the pump.","Note hose positions, then remove the hose clamps and the pump screws.","Fit the new pump and reattach hoses and wiring.","Reassemble and run a drain cycle.")]},
+{t:"Won't spin",c:[
+C("Lid switch or door latch","Easy","Screwdriver, multimeter (optional)","Lid switch / door latch","$10–30","First make sure the load is balanced and not overloaded.","Unplug the washer. Listen for a click when the lid or door closes.","Open the top or control panel to reach the switch.","Swap in the new switch, matching the wiring.","Test with a small load."),
+C("Worn drive belt","Medium","Nut driver, pliers","Washer drive belt","$15–35","Unplug and open the back or bottom panel.","Look for a loose, glazed or snapped belt.","Slip the new belt over the motor and drum pulleys.","Check that it is snug and sits in its grooves.","Close the panel and test a spin."),
+C("Worn motor coupling","Medium","Socket set, screwdriver","Motor coupling","$10–30","Unplug the washer and remove the cabinet panel.","Find the coupling between the motor and the transmission.","Look for crumbled rubber or plastic pieces.","Replace the coupling and reconnect the motor.","Reassemble and test.")]},
+{t:"Leaks",c:[
+C("Loose or cracked fill hoses","Easy","Pliers, towel","Fill hoses (pair)","$10–25","Turn off the water supply and unplug the washer.","Dry the hose ends and the washer connections, then run a little water and see where it drips.","Tighten the couplings by hand plus a quarter turn with pliers.","If the hose is cracked or bulging, replace both hoses.","Run a short cycle and watch the connections."),
+C("Worn door boot seal (front-load)","Medium","Screwdriver, pliers","Door boot seal","$40–120","Unplug the washer and inspect the rubber seal for tears and mold.","Remove the boot clamp ring with a screwdriver.","Pull out the old seal and fit the new one, lining up the drain holes.","Re-seat the clamp ring.","Run a short cycle and check the door edge."),
+C("Leaking drain pump or hose clamp","Medium","Nut driver, pliers, towels","Drain pump / hose clamp","$20–80","Unplug and tip the washer back or open the lower panel.","Check the pump housing and hose clamps for wetness.","Tighten the clamps or replace a cracked pump.","Dry everything and put a paper towel underneath.","Run a drain cycle and check the towel.")]},
+{t:"Won't fill",c:[
+C("Clogged inlet screens","Easy","Pliers, old toothbrush","Inlet screens","$5–10","Turn off the water and unplug the washer.","Unscrew the fill hoses from the back of the washer.","Pull out the small screens in the inlets and rinse off debris.","Reinstall the screens and hoses.","Turn the water on and run a fill."),
+C("Faulty water inlet valve","Medium","Nut driver, pliers, multimeter (optional)","Water inlet valve","$20–60","Unplug the washer and shut off the water.","Remove the top or back panel to reach the valve.","Photograph the wiring, then disconnect the wires and hoses.","Install the new valve and reconnect.","Turn the water on and test a fill."),
+C("Faulty water level pressure switch","Medium","Screwdriver, pliers","Pressure switch","$15–40","Unplug the washer and open the control panel.","Find the clear tube running from the tub to the switch and check it for clogs.","Blow through the tube to clear it.","If it still won't fill, replace the switch.","Reassemble and test.")]},
+{t:"Loud or shaking",c:[
+C("Unlevel washer or transit bolts","Easy","Level, wrench","","$0","Check the back for transit bolts and remove them if present.","Set a level on top of the washer.","Adjust the feet and tighten the lock nuts.","Make sure all four feet touch the floor.","Run a spin cycle."),
+C("Worn shock absorbers / suspension rods","Medium","Socket set, screwdriver","Suspension rods or shock absorbers","$30–80","Unplug and open the cabinet panels.","Push the drum down and see if it bounces freely.","Unclip the old rods or shocks and clip in the new set.","Replace all of them together.","Reassemble and test."),
+C("Worn drum bearing","Hard","Socket set, bearing puller, rubber mallet","Drum bearing kit","$40–150","Unplug and shut off the water.","Spin the drum by hand and listen for grinding or rumbling.","This repair means taking the drum out. Take photos at each stage.","Press in the new bearing and seal.","Consider a pro if the drum is welded shut.")]}
+],
+dryer:[
+{t:"Takes too long",c:[
+C("Clogged lint screen or housing","Easy","Vacuum, narrow brush","Lint screen (if damaged)","$0–15","Pull out the lint screen and clean it.","Rinse it with water. If water beads on the mesh, there is film from fabric softener.","Vacuum the lint screen slot.","Replace the screen if it is torn.","Run a normal load."),
+C("Clogged vent duct","Easy","Vent brush kit, vacuum, screwdriver","Vent brush kit","$10–25","Unplug the dryer (turn off the gas valve if gas).","Disconnect the duct from the back of the dryer.","Clear lint from the duct and the outside vent with the brush.","Replace crushed or flexible foil ducting with rigid or semi-rigid duct.","Reconnect and run a load."),
+C("Weak heating element or igniter","Medium","Multimeter, nut driver","Heating element (electric) or igniter (gas)","$20–70","Unplug the dryer and open the back or front panel.","Test the part for continuity with a multimeter.","Replace it if there is no continuity.","Also replace the thermal fuse if blown.","Reassemble and test heat.")]},
+{t:"Not heating",c:[
+C("Tripped breaker or no 240V power","Easy","None","","$0","Check the breaker. Electric dryers use a double breaker.","Reset it fully off, then on.","Try the dryer again. If it tumbles but doesn't heat, one leg may be out.","If the breaker trips again, stop and call an electrician."),
+C("Blown thermal fuse","Medium","Multimeter, nut driver","Thermal fuse","$8–20","Unplug the dryer and open the back panel.","Find the fuse on the exhaust housing.","Test it for continuity. If there is none, replace it.","Clean the vent first, or it will blow again.","Reassemble and test."),
+C("Failed heating element or igniter","Medium","Multimeter, nut driver","Heating element (electric) or igniter (gas)","$20–70","Unplug the dryer (turn off gas for gas dryers).","Open the cabinet and find the element or igniter.","Test for continuity and replace if open.","Check the wiring terminals for burn marks.","Reassemble and test.")]},
+{t:"Won't start",c:[
+C("Power or cord problem","Easy","None","","$0","Check the breaker and the plug.","Try another appliance in the same outlet to check it.","Make sure the door is fully closed.","If everything checks out, move to the next cause."),
+C("Faulty door switch","Medium","Screwdriver, multimeter","Door switch","$10–25","Unplug the dryer and open the top or front panel.","Find the door switch and test it for continuity.","Replace it if it doesn't click or has no continuity.","Reconnect the wires.","Test the dryer."),
+C("Bad start switch","Medium","Screwdriver, multimeter","Start switch","$15–35","Unplug and remove the control console.","Test the start switch for continuity while pressed.","Replace it if there is no reading.","Reinstall the console.","Test the dryer.")]},
+{t:"Drum won't turn",c:[
+C("Broken drive belt","Medium","Nut driver, putty knife","Drive belt","$10–25","Unplug the dryer and open the cabinet.","Look for a snapped belt around the drum.","Loop the new belt around the drum and idler pulley.","Make sure the belt ribs face the drum.","Close up and test."),
+C("Worn idler pulley","Medium","Nut driver, pliers","Idler pulley","$15–35","Unplug and open the cabinet.","Spin the idler pulley by hand and check for wobble.","Replace it along with the belt.","Reinstall the belt tension.","Close up and test."),
+C("Failed drive motor","Hard","Nut driver, multimeter","Drive motor","$60–150","Unplug and open the cabinet.","Check whether the motor hums but doesn't turn.","Replace the motor and reattach the belt and wiring.","Make sure the vent is clear.","Consider a pro if you are unsure.")]},
+{t:"Squealing or thumping",c:[
+C("Worn drum support rollers","Medium","Nut driver, pliers","Drum rollers","$15–40","Unplug and open the cabinet.","Spin each roller by hand. Replace any that wobble or squeak.","Replace rollers as a set.","Check the axles for wear.","Reassemble and test."),
+C("Worn idler pulley","Medium","Nut driver","Idler pulley","$15–35","Unplug and open the cabinet.","Spin the idler pulley and feel for grinding.","Replace the pulley.","Reinstall the belt tension.","Reassemble and test."),
+C("Worn drum glides or felt seal","Medium","Nut driver, putty knife","Drum glides / felt seal","$15–30","Unplug and remove the front panel.","Check the front edge of the drum for worn felt.","Replace the glides or seal.","Clean any lint from the area.","Reassemble and test.")]}
+]};
+
+P.fridge=[
+{t:"Not cooling",c:[
+C("Dirty condenser coils","Easy","Vacuum, coil brush","Coil cleaning brush","$0-10","Unplug the fridge.","Find the coils on the back or behind the bottom front grille.","Vacuum and brush off dust and pet hair, including around the fan.","Plug it in and give it 24 hours to cool down."),
+C("Condenser fan not running","Medium","Nut driver, screwdriver","Condenser fan motor","$20-60","Unplug and remove the lower rear panel.","Spin the fan by hand. It should turn freely.","Replace the motor if it is seized, noisy or dead.","Reattach the panel and check that air blows when the compressor runs."),
+C("Failed compressor start relay","Medium","Nut driver, pliers","Start relay","$15-40","Unplug and remove the compressor cover on the back.","Pull the relay straight off. A rattle, burnt smell or black marks mean it is bad.","Fit a relay with the same part number.","If the compressor only clicks and never runs, call a pro.")]},
+{t:"Fridge warm, freezer cold",c:[
+C("Blocked vents or worn door seal","Easy","Warm soapy water, dollar bill","Door gasket (if worn)","$0-90","Move food away from the vents inside.","Close the door on a dollar bill. If it slides out easily, the seal leaks.","Wash the gasket with warm soapy water.","Replace the gasket if it is torn or stiff."),
+C("Failed evaporator fan motor","Medium","Nut driver","Evaporator fan motor","$25-60","Unplug and remove the freezer back panel.","Spin the fan blade by hand and check for ice around it.","Replace the motor if it is stiff or noisy.","Reattach the panel and listen for the fan."),
+C("Failed defrost heater or thermostat","Medium","Multimeter, nut driver, towels","Defrost heater / thermostat","$30-90","Unplug the fridge and remove the freezer back panel.","A solid sheet of frost on the coils points to a failed defrost system.","Let it melt fully (put towels down), then test the heater and thermostat.","Replace the failed part and reassemble.")]},
+{t:"Noisy",c:[
+C("Fan blade hitting ice or debris","Easy","Flashlight, towels","","$0","Unplug and remove the freezer back panel.","Look for ice or loose items touching the fan blade.","Melt and clear it, then spin the fan by hand.","Reassemble. If ice returns, check the defrost parts."),
+C("Worn fan motor","Medium","Nut driver","Fan motor (condenser or evaporator)","$20-60","Unplug and find which fan makes the noise (rear bottom or inside the freezer).","Spin it by hand and feel for grinding.","Replace the motor.","Reassemble and listen."),
+C("Unlevel or touching the wall","Easy","Level","","$0","Check that the fridge doesn't touch the wall or cabinets.","Adjust the front feet so it tilts slightly back.","Make sure the drip pan isn't rattling.","Listen again.")]},
+{t:"Leaking water",c:[
+C("Clogged defrost drain","Easy","Warm water, turkey baster, pipe cleaner, towels","","$0","Unplug and remove the freezer back panel.","Find the drain hole under the coils.","Flush it with warm water using a baster and clear it with a pipe cleaner.","Empty the drain pan underneath, then reassemble."),
+C("Loose or cracked water line","Easy","Pliers, towel","Water line tubing","$10-25","Turn off the water supply and pull the fridge out.","Dry the line and its fittings and look for drips.","Tighten fittings or replace cracked tubing.","Turn the water on and check again."),
+C("Failed ice maker or water valve","Medium","Nut driver, pliers","Water valve","$20-50","Turn off the water and unplug the fridge.","Find the valve at the lower back.","Swap in a new valve and reconnect lines.","Turn the water on and check for leaks.")]}
+];
+P.dishwasher=[
+{t:"Won't drain",c:[
+C("Clogged filter","Easy","None","","$0","Turn off the dishwasher and remove the lower rack.","Twist out the filter and rinse it. Check for glass or bones.","Look into the sump for stuck items.","Put it back and run a rinse."),
+C("Kinked or blocked drain hose","Easy","Pliers, bucket","Drain hose","$10-25","Open the sink cabinet and check the hose for kinks.","If connected to a disposal, make sure the knockout plug is removed.","Disconnect and flush the hose if clogged.","Reconnect and run a drain."),
+C("Failed drain pump","Medium","Nut driver, multimeter, towels","Drain pump","$25-80","Turn off power and remove the lower front panel.","Check the pump for a jammed impeller.","Test the pump with the multimeter.","Replace it if it is dead.")]},
+{t:"Not cleaning well",c:[
+C("Clogged spray arms","Easy","Toothpick, vinegar","","$0","Remove the spray arms and rinse them.","Poke out clogged holes with a toothpick.","Soak in vinegar for 10 minutes.","Put them back and run a cycle."),
+C("Faulty water inlet valve","Medium","Nut driver, multimeter","Water inlet valve","$20-50","Turn off power and water.","Open the lower panel and find the valve.","Test the coil with the multimeter.","Replace the valve if it fails."),
+C("Failed heating element","Medium","Multimeter, nut driver","Heating element","$25-70","Turn off power and open the lower panel.","Look for blisters or breaks in the element.","Test it with the multimeter.","Replace it if it fails.")]},
+{t:"Leaks",c:[
+C("Worn door gasket","Easy","Screwdriver","Door gasket","$20-60","Check the gasket for cracks or flat spots.","Pull the old gasket out of its groove.","Press the new gasket in evenly.","Run a cycle and check the door edge."),
+C("Loose hose clamp or fitting","Easy","Pliers, towel","Hose clamp","$5-10","Open the sink cabinet and the lower panel.","Look for water drips at the fittings.","Tighten the clamp or replace it.","Run a cycle and check.")]},
+{t:"Won't start",c:[
+C("Control lock or power reset","Easy","None","","$0","Check that the control lock isn't on.","Switch off the dishwasher's breaker for 5 minutes, then back on.","Close the door firmly until it latches.","Try a cycle."),
+C("Faulty door switch or latch","Medium","Multimeter, screwdriver","Door latch / switch","$15-45","Turn off power and remove the inner door panel.","Check that the latch engages.","Test the switch with the multimeter.","Replace it if it fails.")]}
+];
+P.oven=[
+{t:"Won't heat",c:[
+C("Failed bake element","Medium","Screwdriver, multimeter","Bake element","$25-60","Switch off the oven's breaker at the panel and let it cool.","Look for blisters or breaks in the element.","Remove the mounting screws and test it.","Replace it if it fails."),
+C("Failed temperature sensor","Medium","Screwdriver, multimeter","Oven temperature sensor","$20-50","Switch off the breaker.","Remove the sensor probe at the back of the oven.","Most read about 1,000-1,100 Ω at room temperature (check your manual).","Replace it if it is open or far off."),
+C("Faulty control board or relay","Hard","Screwdriver","Control board","$80-250","Switch off the breaker.","Look for burn marks on the board.","Replace the board with the exact part for your model.","This is a good point to get a pro quote.")]},
+{t:"Temperature is wrong",c:[
+C("Calibration offset","Easy","None","","$0","Check the manual for the temperature offset setting.","Use an oven thermometer to measure the real temperature.","Adjust the offset to match.","Test again."),
+C("Worn door gasket","Easy","Screwdriver","Door gasket","$20-50","Check the gasket for gaps or tears.","Replace it if damaged.","Close the door and check that it seals.","Retest."),
+C("Failing temperature sensor","Medium","Screwdriver, multimeter","Oven temperature sensor","$20-50","Switch off the breaker.","Remove the sensor and measure its resistance.","Compare to the manual's spec.","Replace it if off.")]},
+{t:"Stove burner won't heat",c:[
+C("Burner not seated","Easy","None","Coil burner (if bad)","$10-25","Turn the burner off and let it cool.","Swap it with a working burner of the same size.","If the problem follows the burner, replace the burner.","If it stays, the socket or switch is bad."),
+C("Bad burner receptacle","Medium","Screwdriver, pliers","Burner receptacle","$15-35","Switch off the breaker.","Look for burn marks on the receptacle.","Replace it with a matching one.","Test the burner."),
+C("Faulty infinite switch","Medium","Screwdriver, multimeter","Infinite switch","$20-60","Switch off the breaker and remove the knob.","Remove the panel to reach the switch.","Swap in a new switch and reconnect the wires.","Test the burner.")]}
+];
+const N={washer:"Washer",dryer:"Dryer",fridge:"Refrigerator",dishwasher:"Dishwasher",oven:"Electric oven / range"};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let S;try{S=JSON.parse(localStorage.getItem('ff1'))}catch(e){}
+if(!S||!Array.isArray(S.history))S={models:{washer:'',dryer:''},history:[]};
+S.models=S.models||{washer:'',dryer:''};
+const save=()=>{try{localStorage.setItem('ff1',JSON.stringify(S));return true}catch(e){alert('Could not save: browser storage is full. Export a backup and delete old entries.');return false}};
+let v={tab:'find',a:null,p:null,i:0,done:false,photo:''};
+const cap=s=>N[s]||s[0].toUpperCase()+s.slice(1);
+
+function nav(){
+  $('#nav').innerHTML=[['find','Find a fix'],['test','Meter tests'],['hist','History ('+S.history.length+')'],['set','Settings']].map(([k,l])=>
+    `<button class="${v.tab===k?'on':''}" onclick="go('${k}')">${l}</button>`).join('');
+}
+function go(t){if(v.tab==='test'&&t!=='test'){MT.id=null;v.open=null}v.tab=t;render()}
+function home(){MT.id=null;v.tab='find';v.a=null;v.p=null;v.i=0;v.done=false;v.photo='';v.open=null;render()}
+function homeBtn(){return '<button class="btn alt" onclick="home()">⌂ Home</button>'}
+function render(){nav();$('#app').innerHTML=v.tab==='find'?find():v.tab==='test'?tests():v.tab==='hist'?hist():sett();window.scrollTo(0,0)}
+
+function partsFinder(a,c){
+  if(!c.p)return '';
+  const model=(S.models[a]||'').trim();
+  if(!model)return `<div class="partbox"><h3>Parts Finder</h3><div class="fitwarn">Model number needed before ordering</div><p class="mut">Fix Finder will not claim a part fits without an exact appliance model. Save the full model number in Settings first.</p><div class="row"><button type="button" class="btn alt" onclick="go('set')">Add model number</button></div></div>`;
+  const q=encodeURIComponent(model+' '+c.p+' '+N[a]);
+  const rc='https://www.repairclinic.com/Shop-For-Parts?query='+q;
+  const ps='https://www.partselect.com/Search/?SearchTerm='+q;
+  const sears='https://www.searspartsdirect.com/search?q='+q;
+  return `<div class="partbox"><h3>Parts Finder</h3><div class="fitok">Model loaded: ${esc(model)}</div><p><b>Part needed:</b> ${esc(c.p)}</p><p class="mut"><b>Compatibility check required:</b> open a model-based catalog below and confirm that the catalog identifies the exact model and marks the selected part as fitting that model. If the site cannot confirm the exact model, do not order it as a verified fit.</p><div class="links"><a target="_blank" rel="noopener" href="${rc}">Verify at RepairClinic</a><a target="_blank" rel="noopener" href="${ps}">Verify at PartSelect</a><a target="_blank" rel="noopener" href="${sears}">Verify at Sears PartsDirect</a></div><p class="mut">After a catalog gives you a manufacturer/OEM part number, compare that number with the listing you intend to buy. Fix Finder itself stays offline and cannot independently certify a merchant listing.</p></div>`;
+}
+function find(){
+  if(!v.a)return `<h2>What needs fixing?</h2>`+Object.keys(P).map(k=>`<button class="big" onclick="pick('${k}')">${N[k]}<small>${P[k].length} common problems</small></button>`).join('')+`<details class="card"><summary>Gas or electric? Where is my model number?</summary><p><b>Gas or electric:</b> a gas dryer or range has a gas pipe at the back and a normal 120V plug (dryers: a thick 3- or 4-prong plug means electric). Check the manual or the label if unsure.</p><p><b>Model number:</b> usually on a sticker inside the door or lid (washer, dryer, dishwasher), on the inside wall of the fresh food section (fridge) or on the oven frame behind the door.</p></details><p class="mut">Microwaves, water heaters and gas ovens involve high voltage or gas, so this app leaves them to a pro.</p>`;
+  if(v.p===null)return `<div class="row"><button class="btn alt" onclick="v.a=null;render()">‹ Back to appliances</button>${homeBtn()}</div><h2>${cap(v.a)}: what's wrong?</h2>`+
+    P[v.a].map((x,i)=>`<button class="big" onclick="v.p=${i};v.i=0;render()">${esc(x.t)}</button>`).join('');
+  const pr=P[v.a][v.p];
+  if(v.done)return doneForm(pr);
+  if(v.i>=pr.c.length)return `<div class="row"><button class="btn alt" onclick="v.i--;render()">‹ Previous cause</button>${homeBtn()}</div><div class="card"><h2>We're out of ideas for this one</h2>
+  <p>None of the likely causes fixed it. A pro can diagnose this faster than more guessing, and some causes (like a failed motor or bearing) are worth a service call.</p>
+  <div class="row"><button class="btn alt" onclick="v.i=0;render()">Start over</button><button class="btn" onclick="v.done=true;render()">Save notes anyway</button></div></div>`;
+  const c=pr.c[v.i];
+  return `<div class="row"><button class="btn alt" onclick="${v.i>0?'v.i--;render()':'v.p=null;render()'}">‹ ${v.i>0?'Previous cause':'Back to problems'}</button>${homeBtn()}</div>
+  <div class="mut">${cap(v.a)} · ${esc(pr.t)} · Cause ${v.i+1} of ${pr.c.length}</div>
+  <div class="warn"><b>Safety first:</b> unplug the appliance or switch off its breaker before opening it. For gas appliances, also close the gas valve. Stop if you are unsure.</div>
+  <div class="card"><h2>${esc(c.n)}</h2>
+  <div class="tags"><b>Difficulty</b><span><span class="pill ${c.d}">${c.d}</span></span>
+  <b>Tools</b><span>${esc(c.t)}</span>
+  <b>Part</b><span>${c.p?esc(c.p):'No part needed'}</span>
+  <b>Price</b><span>${esc(c.$)}</span></div>
+  ${partsFinder(v.a,c)}
+  <ol class="steps">${c.s.map((s,i)=>`<li><label><input type="checkbox"><span>${esc(s)}</span></label></li>`).join('')}</ol>
+  ${tl(c)}<div class="row"><button class="btn alt" onclick="v.i++;render()">Didn't fix it</button><button class="btn ok" onclick="v.done=true;render()">It's fixed</button></div></div>`;
+}
+function pick(a){v.a=a;v.p=null;render()}
+function doneForm(pr){
+  const c=pr.c[v.i];
+  return `<div class="row"><button class="btn alt" onclick="v.done=false;render()">‹ Back to diagnosis</button>${homeBtn()}</div><div class="card"><h2>${c?'Nice work. Save this repair':'Save your notes'}</h2>
+  <p class="mut">${cap(v.a)} · ${esc(pr.t)}${c?' · '+esc(c.n):''}</p>
+  <label class="f" for="nt">Notes (what you did, part number, cost)</label><textarea id="nt" rows="4"></textarea>
+  <label class="f" for="ph">Photo (optional)</label><input id="ph" type="file" accept="image/*" onchange="photo(this.files[0])">
+  <div id="pv"></div>
+  <div class="row"><button class="btn" onclick="saveRep()">Save to history</button><button class="btn alt" onclick="v.a=null;v.p=null;v.done=false;v.photo='';render()">Skip saving</button></div></div>`;
+}
+function photo(f){
+  if(!f)return;const r=new FileReader();
+  r.onload=e=>{const im=new Image();im.onload=()=>{const k=Math.min(1,700/Math.max(im.width,im.height)),cv=document.createElement('canvas');
+    cv.width=im.width*k;cv.height=im.height*k;cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);
+    v.photo=cv.toDataURL('image/jpeg',.7);$('#pv').innerHTML='<img class="ph" alt="Repair photo" src="'+v.photo+'">'};im.src=e.target.result};
+  r.readAsDataURL(f);
+}
+function saveRep(){
+  const pr=P[v.a][v.p],c=pr.c[v.i];
+  S.history.unshift({id:Date.now(),date:new Date().toISOString().slice(0,10),appliance:v.a,problem:pr.t,cause:c?c.n:'Not resolved',notes:$('#nt').value.trim(),photo:v.photo});
+  if(!save()){S.history.shift();return}
+  v.a=null;v.p=null;v.done=false;v.photo='';go('hist');
+}
+function hist(){
+  const top='<div class="row">'+homeBtn()+'</div>';
+  if(!S.history.length)return top+`<div class="card"><h2>No repairs saved yet</h2><p class="mut">Finish a fix and tap "Save to history" to keep notes and a photo here.</p></div>`;
+  return top+S.history.map(h=>`<div class="card hist"><div class="mut">${esc(h.date)} · ${cap(esc(h.appliance))}</div>
+  <h3>${esc(h.problem)}</h3><div>${esc(h.cause)}</div>
+  ${h.notes?`<p>${esc(h.notes).replace(/\n/g,'<br>')}</p>`:''}
+  ${h.photo?`<img class="ph" alt="Repair photo" src="${h.photo}">`:''}
+  <button class="del" onclick="del(${h.id})">Delete</button></div>`).join('');
+}
+function del(id){if(confirm('Delete this repair?')){S.history=S.history.filter(h=>h.id!==id);save();render()}}
+function sett(){
+  return '<div class="row">'+homeBtn()+'</div>'+`<div class="card"><h2>Model numbers</h2>
+  <p class="mut">The full model number is required for Parts Finder. Copy every letter, number, dash and suffix from the appliance label. Parts Finder uses it to open model-based parts catalogs for a compatibility check before ordering.</p>
+  ${Object.keys(P).map(k=>`<label class="f" for="m-${k}">${N[k]} model</label><input id="m-${k}" type="text" value="${esc(S.models[k]||'')}" oninput="S.models['${k}']=this.value.trim();save()">`).join('')}</div>
+  <div class="card"><h2>Backup</h2>
+  <p class="mut">Export saves your history, photos and model numbers to a file. Import replaces what is in this browser with a backup file.</p>
+  <div class="row"><button class="btn" onclick="exp()">Export backup</button>
+  <button class="btn alt" onclick="$('#imp').click()">Import backup</button></div>
+  <input id="imp" type="file" accept=".json,application/json" hidden onchange="imp(this.files[0])"></div>`;
+}
+function exp(){
+  const b=new Blob([JSON.stringify(S)],{type:'application/json'}),a=document.createElement('a');
+  a.href=URL.createObjectURL(b);a.download='fix-finder-backup-'+new Date().toISOString().slice(0,10)+'.json';
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function imp(f){
+  if(!f)return;const r=new FileReader();
+  r.onload=e=>{try{const d=JSON.parse(e.target.result);
+    if(!d||!Array.isArray(d.history)||typeof d.models!=='object')throw 0;
+    if(!confirm('Replace current data with this backup ('+d.history.length+' repairs)?'))return;
+    S={models:d.models,history:d.history};save();render()}
+  catch(x){alert('That file is not a Fix Finder backup.')}};
+  r.readAsText(f);
+}
+// Guided meter walkthrough state. Returning from a test keeps the active repair in place.
+let MT={id:null,step:0};
+function startGuide(id){MT={id:id,step:0};v.open=id;v.tab='test';render()}
+function guideNext(){const t=TESTS.find(x=>x.id===MT.id);if(t&&MT.step<t.s.length)MT.step++;render()}
+function guideBack(){if(MT.step>0){MT.step--;render()}else{MT.id=null;render()}}
+function backToRepair(){MT.id=null;v.open=null;v.tab='find';render()}
+const TESTS=[
+{id:"mb",t:"Meter basics (start here)",s:["Any basic digital multimeter ($15-25) works. You need two settings: continuity (the beep or sound-wave symbol) and ohms (the Ω symbol).","Unplug the appliance first. For a gas dryer, also close the gas valve. The component tests in Fix Finder are done with the appliance de-energized. If a diagnosis reaches live-voltage testing, Fix Finder stops and recommends qualified help.","Plug the black probe into COM and the red probe into the jack marked Ω or V.","Check the meter: touch the two probe tips together. You should hear a beep and see about 0. Pull them apart and it should show OL (open, no connection).","Take a photo of the wiring, then pull the wires off the part you are testing. If the wires stay on, other parts can give a false reading.","The probes can touch either terminal. It does not matter which one is red or black for these tests."],e:"A beep or a number near 0 means the path is connected (continuity). OL or a lone 1 means open, a break in the part."},
+{id:"pw",t:"Dryer power check (live-voltage stop point)",w:"Fix Finder does not guide live probing of a 120/240V receptacle or energized appliance. Live-voltage diagnosis has shock and arc hazards and should be handled by a qualified person with appropriate training and equipment.",s:["Unplug the dryer and leave it unplugged while checking the basics.","At the electrical panel, identify the dryer breaker. If it appears tripped, reset it according to the breaker/panel instructions. Do not remove the panel cover.","Inspect the dryer cord and plug without opening them. Stop if you see heat damage, melting, cracking or other damage.","If the dryer tumbles but does not heat, or the breaker trips again, the next electrical diagnosis may require energized testing. Fix Finder stops here."],e:"If resetting an accessible breaker restores normal operation and it stays on, retest the dryer. If the breaker trips again, there is visible heat damage, or diagnosis requires live voltage measurements, stop and use a qualified electrician or appliance technician."},
+{id:"el",t:"Heating element (electric dryer)",s:["Unplug the dryer and open the panel to reach the heater housing (a metal box or tube holding a coil of wire). Your model's manual or a parts diagram shows which panel.","Photograph the wiring, then pull the two wires off the element terminals.","Set the meter to ohms (Ω). Touch one probe to each terminal.","Now keep one probe on a terminal and touch the other probe to the bare metal of the housing."],e:"Good: roughly 8-15 Ω between the two terminals (many are about 10 Ω) and OL from each terminal to the metal housing. Bad: OL between the terminals (broken coil), or any beep or reading from a terminal to the housing (shorted to ground). Replace the element in either case. A failed element is often caused by a clogged vent, so clean the vent too. If the element tests good, test the thermal fuse and thermostats next."},
+{id:"ig",t:"Gas dryer igniter",w:"If you ever smell gas, close the gas valve, open windows, leave the house and call the gas company. Do not use electricity or the meter.",s:["Unplug the dryer and close the gas valve behind it.","Open the panel at the bottom or front to reach the burner assembly. The igniter is a small ceramic bar with two wires.","Photograph the wiring and unplug the igniter connector.","Set the meter to ohms (Ω) and touch one probe to each igniter terminal."],e:"Bad: OL, so replace it. A reading does not prove the igniter is good: a weak igniter can read fine but be too weak to open the gas valve. If the igniter glows orange but the burner never lights, replace it anyway. If a new igniter does not fix it, the gas valve coils or sensor may be bad, and that is a good point to call a pro."},
+{id:"tf",t:"Thermal fuse",s:["Unplug the dryer.","Find the thermal fuse: a small white or black plastic part with two spade terminals, usually on the blower housing or exhaust duct (check your manual).","Photograph the wiring and pull the two wires off.","Set the meter to continuity and touch one probe to each terminal."],e:"Good: a beep or about 0 Ω. Bad: OL, which means the fuse has blown. A thermal fuse cannot be reset, so replace it. A fuse blows because of overheating, so clean the vent and lint housing before using the dryer again, or it will blow again."},
+{id:"th",t:"Thermostats (high-limit and cycling)",s:["Unplug the dryer.","Find the thermostats: small round or rectangular metal discs with two terminals on the heater housing or blower housing.","Photograph the wiring, pull the wires, and set the meter to continuity.","With the dryer cold (room temperature), touch one probe to each terminal."],e:"Good: a beep (they are normally closed when cold). Bad: OL when cold, so replace the part."},
+{id:"sw",t:"Door, lid and start switches",s:["Unplug the appliance and open the panel to reach the switch. The door switch is near the door frame, the lid switch is under the washer lid, and the start switch is behind the control panel.","Photograph the wiring, pull the wires off, and set the meter to continuity.","Touch the probes to the two terminals while the switch is released and note the reading.","Press and hold the plunger or button and test again."],e:"Good: the reading changes when you press it (beep to OL, or OL to beep). Bad: the reading never changes. On a switch with three terminals, test pairs of terminals (usually COM to NO or COM to NC). One pair should change when pressed."},
+{id:"he",t:"Oven or dishwasher heating element",s:["Switch off the breaker (ovens are often hard-wired) or unplug the appliance, and let it cool completely.","Reach the element's two terminals: for an oven, remove the mounting screws and pull it out gently; for a dishwasher, open the lower panel. Photograph the wiring and pull the wires off. They can be brittle, so handle them gently.","Set the meter to ohms (Ω) and touch one probe to each terminal.","Then touch one probe to a terminal and the other to the element's metal sheath or the chassis."],e:"Good: oven bake or broil elements about 15-40 Ω, dishwasher elements about 10-30 Ω, and OL from a terminal to the sheath. Bad: OL between the terminals (broken), or any beep or reading to the sheath (shorted). Replace it in either case. Blisters or breaks in the element are a bad sign even if it reads okay."},
+{id:"df",t:"Refrigerator defrost heater and thermostat",s:["Unplug the fridge and empty the freezer. Remove the freezer back panel to see the evaporator coils (pipes covered in frost).","The defrost heater is a glass or metal tube or wire attached to the coils. The defrost thermostat is a small disc or capsule with two wires clipped to the coils. Photograph the wiring and unplug each.","Set the meter to ohms (Ω) and touch the probes to the heater's two terminals.","Set the meter to continuity and test the thermostat. Test it while it is still cold from the freezer."],e:"Heater good: roughly 15-60 Ω. Bad: OL. Thermostat good: beeps when cold and goes to OL as it warms in your hand. Bad: OL while still cold. If the coils are frosted over, let the fridge defrost fully with the doors open before judging, and put towels down for the water."},
+{id:"mo",t:"Dryer drive motor",s:["Unplug the dryer.","Open the panel to reach the motor. Photograph the wiring and unplug the motor's wire connector.","Set the meter to ohms (Ω) and test between the winding terminals shown in the wiring diagram, or try each pair.","Then touch one probe to each terminal in turn and the other probe to the motor's bare metal body."],e:"Good: a low reading (a few ohms up to about 30 Ω, depending on the model) across each winding and OL from every terminal to the metal body. Bad: OL across a winding, or any beep to the body. A motor that hums but will not turn may only have a jam or a bad belt or idler pulley, so check those first. This is a harder repair, so get a quote if unsure."},
+{id:"iv",t:"Water inlet valve (washer or dishwasher)",s:["Unplug the washer and turn off the water.","Reach the valve at the back of the washer. Photograph the wiring and pull the wires off the valve coils.","Set the meter to ohms (Ω) and touch one probe to each terminal of one coil. Repeat for each coil."],e:"Good: roughly 500-1,500 Ω per coil. Bad: OL (broken coil) or near 0 (shorted). If the coils read fine but the washer still won't fill, check the inlet screens for clogs before buying a valve."},
+{id:"dp",t:"Drain pump (washer or dishwasher)",s:["Unplug the washer.","Reach the pump (usually at the bottom front or underneath). Photograph the wiring and unplug the pump connector.","Set the meter to ohms (Ω) and touch one probe to each pump terminal."],e:"Good: a reading of a few ohms to a few dozen ohms (many pumps read about 10-30 Ω). Bad: OL. Some newer pumps use a different design with no simple meter test, so check the manual. If the pump reads fine, the problem is usually a clog in the filter, hose or pump housing."},
+{id:"ps",t:"Washer water level pressure switch",s:["Unplug the washer and open the control panel to reach the pressure switch.","Photograph the wiring and pull the wires off. Detach the clear plastic tube from the switch nozzle and check it for clogs.","Set the meter to continuity and test the terminals with the tube off.","Gently blow into the nozzle and listen for a click, then test again."],e:"Good: the reading changes and you hear a click when you blow. Bad: no click and no change. Clear the tube of blockage before replacing the switch."}
+];
+const TM=[[/defrost/,["df"]],[/heating element|igniter/,["el","ig"]],[/thermal fuse/,["tf","th"]],[/door switch|lid switch|start switch/,["sw"]],[/drive motor/,["mo"]],[/inlet valve/,["iv"]],[/^Failed drain pump/,["dp"]],[/pressure switch/,["ps"]],[/breaker|240V|power or cord/,["pw"]]];
+const tFor=n=>{for(const [r,ids] of TM)if(r.test(n))return ids;return[]};
+const tl=c=>{const ids=(/element/i.test(c.n)&&(v.a==='oven'||v.a==='dishwasher'))?['he']:tFor(c.n);return ids.length?'<div class="row">'+ids.map(id=>{const t=TESTS.find(x=>x.id===id);return `<button class="btn alt" onclick="startGuide('${id}')">How to test: ${esc(t.t)}</button>`}).join('')+'</div>':''};
+function meterReturnButton(){
+  return v.a&&v.p!==null
+    ? '<button class="btn alt" onclick="backToRepair()">Return to repair</button>'
+    : '';
+}
+function tests(){
+  if(MT.id){
+    const x=TESTS.find(t=>t.id===MT.id);if(!x){MT.id=null;return tests()}
+    const total=x.s.length,done=MT.step>=total;
+    return `<div class="row"><button class="btn alt" onclick="MT.id=null;render()">‹ All meter tests</button>${meterReturnButton()}${homeBtn()}</div>
+    <div class="card"><div class="mut">Guided meter test · ${Math.min(MT.step+1,total)} of ${total}</div><h2>${esc(x.t)}</h2>
+    ${x.w?`<div class="warn"><b>Safety stop:</b> ${esc(x.w)}</div>`:''}
+    ${done?`<div class="res"><b>How to read the result:</b> ${esc(x.e)}</div>`:`<p style="font-size:18px"><b>${esc(x.s[MT.step])}</b></p>`}
+    <div class="row">${MT.step>0?'<button class="btn alt" onclick="guideBack()">Back</button>':''}${done?'':`<button class="btn" onclick="guideNext()">${MT.step===0?'Start':'Next step'}</button>`}</div>
+    ${done?`<div class="row"><button class="btn alt" onclick="MT.step=0;render()">Repeat test</button></div>`:''}</div>`;
+  }
+  return '<div class="row">'+meterReturnButton()+homeBtn()+'</div><h2>Test parts with a multimeter</h2><p class="mut">Choose a test for a step-by-step walkthrough. Start with Meter basics if you are new to a multimeter. Component tests are designed for de-energized appliances; Fix Finder stops before live-voltage probing.</p>'+TESTS.map(x=>`<button class="big" onclick="startGuide('${x.id}')">${esc(x.t)}<small>${x.id==='pw'?'Safety stop before energized diagnosis':'Guided de-energized test'}</small></button>`).join('');
+}
+render();
+</script></body></html>
